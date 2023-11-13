@@ -1,29 +1,26 @@
-char	*strnstr(const char *haystack, const char *needle, unsigned int len)
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef	struct s_list
 {
-	const char *flag;
-	const char	*needle_start;
-	unsigned int	original_len;
+	int	x;
+	int	y;
+	struct s_list *next;
+} t_list;
 
-	while (*haystack != '\0' && *haystack != *needle)
-		haystack++;
-	if (*haystack == '\0')
-		return (0); 
-	flag = haystack; // a ce moment on a *haystack = *needle, on pose un flag
-	needle_start = needle;
-	original_len = len;
-	while (len > 0 && *haystack != '\0')
-	{	
-		flag = haystack;
-		while (*needle != '\0' && *needle == *haystack)
-		{
-			needle++;
-			haystack++;
-			len--;
-		}
-		if (len == 0)
-			return (flag);
-		else
-			len = original_len;
-	}
+void	init_cell(t_list *list)
+{
+	(*list).x = 45;
+	(*list).y = 67;
+}
 
-		
+int	main(void)
+{
+	
+	t_list jambon;
+	
+	init_cell(&jambon);
+
+	printf("%d %d\n", jambon.x, jambon.y);
+	return (0);
+}
